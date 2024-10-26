@@ -12,7 +12,7 @@ const Header: Component = () => {
     <header style={{ display: 'flex', justifyContent: 'space-between', padding: '10px', backgroundColor: '#282c34', color: 'white' }}>
       <h1>simple-design-tool</h1>
       <button onClick={toggleSettingsDialog}>Settings</button>
-      {isSettingsDialogOpen() && <SettingsDialog />}
+      {isSettingsDialogOpen() && <SettingsDialog toggleSettingsDialog={toggleSettingsDialog} />}
     </header>
   );
 };
