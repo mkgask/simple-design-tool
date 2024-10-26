@@ -6,7 +6,8 @@ const App: Component = () => {
   const [theme, setTheme] = createSignal('system');
 
   const applyTheme = (theme: string) => {
-    document.documentElement.setAttribute('data-theme', theme);
+    document.body.classList.remove('light-theme', 'dark-theme');
+    document.body.classList.add(`${theme}-theme`);
   };
 
   const handleSystemThemeChange = (event: MediaQueryListEvent) => {
