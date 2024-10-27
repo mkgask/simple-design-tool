@@ -29,3 +29,16 @@ code {
 .dark select {
   background-color: #1F2937;
 }
+
+/* Styles for theme selection icons */
+.theme-icon {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.theme-icon.selected {
+  border-color: #3b82f6; /* Blue-500 */
+}
