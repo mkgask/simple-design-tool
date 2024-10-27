@@ -12,12 +12,13 @@ const SettingsDialog = ({ toggleSettingsDialog }) => {
   return (
     <div class="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50">
       <div class="rounded-lg shadow-lg w-96">
-        <div class="flex justify-between items-center p-4 border-b">
+        <div class="flex justify-between items-center p-4 border-b dark:border-gray-600">
           <h2 class="text-xl font-semibold">Settings</h2>
           <button onClick={toggleSettingsDialog} class="text-gray-500 hover:text-gray-700">
             &times;
           </button>
         </div>
+
         <div class="p-4">
           <label class="block mb-2">
             Theme:
@@ -28,7 +29,8 @@ const SettingsDialog = ({ toggleSettingsDialog }) => {
             </select>
           </label>
         </div>
-        <div class="flex justify-end p-4 border-t">
+
+        <div class="flex justify-end p-4 border-t dark:border-gray-600">
           <button onClick={toggleSettingsDialog} class="px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-600">
             Close
           </button>
