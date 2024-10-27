@@ -1,5 +1,6 @@
 import { Component, createSignal } from 'solid-js';
 import SettingsDialog from './settings';
+import { Navbar, Button } from 'flowbite';
 
 const Header: Component = () => {
   const [isSettingsDialogOpen, setIsSettingsDialogOpen] = createSignal(false);
@@ -9,11 +10,17 @@ const Header: Component = () => {
   };
 
   return (
-    <header style={{ display: 'flex', justifyContent: 'space-between', padding: '10px', backgroundColor: '#282c34', color: 'white' }}>
-      <h1>simple-design-tool</h1>
-      <button onClick={toggleSettingsDialog}>Settings</button>
+    <Navbar fluid={true} rounded={true}>
+      <Navbar.Brand>
+        <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          simple-design-tool
+        </span>
+      </Navbar.Brand>
+      <div class="flex md:order-2">
+        <Button onClick={toggleSettingsDialog}>Settings</Button>
+      </div>
       {isSettingsDialogOpen() && <SettingsDialog toggleSettingsDialog={toggleSettingsDialog} />}
-    </header>
+    </Navbar>
   );
 };
 
