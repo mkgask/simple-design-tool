@@ -2,14 +2,14 @@ import { Component, createSignal, onCleanup } from 'solid-js';
 import Header from './components/Header';
 import Main from './components/Main';
 
-import { Button, Modal } from 'flowbite';
+import 'flowbite';
 
 const App: Component = () => {
   const [theme, setTheme] = createSignal('system');
 
   const applyTheme = (theme: string) => {
     document.body.classList.remove('light-theme', 'dark-theme');
-    document.body.classList.add(`theme-${theme}`);
+    document.body.classList.add(`${theme}-theme`);
   };
 
   const handleSystemThemeChange = (event: MediaQueryListEvent) => {
