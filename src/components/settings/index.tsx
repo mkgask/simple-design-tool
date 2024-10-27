@@ -13,8 +13,10 @@ const SettingsDialog = ({ toggleSettingsDialog }) => {
       <div class="rounded-lg shadow-lg w-96">
         <div class="flex justify-between items-center p-4 border-b dark:border-gray-600">
           <h2 class="text-xl font-semibold">Settings</h2>
-          <button onClick={toggleSettingsDialog} class="text-gray-500 hover:text-gray-700">
-            &times;
+          <button onClick={toggleSettingsDialog} class="text-lg text-gray-500 hover:text-gray-700">
+            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+            </svg>
           </button>
         </div>
 
