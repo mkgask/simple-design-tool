@@ -20,31 +20,36 @@ const SettingsDialog = ({ toggleSettingsDialog }) => {
 
         <div class="p-4">
           <label class="block mb-2">
-            Theme:
+            Theme
             <div class="flex space-x-4 mt-1">
               <button
-                class={`p-2 rounded-md ${theme.value === 'light' ? 'border-2 border-blue-500' : 'border'}`}
+                class={`p-2 rounded-md size-18 flex flex-col justify-center items-center ${theme() === 'light' ? 'border-2 border-blue-500' : 'border'}`}
                 onClick={() => handleThemeChange('light')}
               >
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05 5.636 5.636M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/>
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/>
                 </svg>
+                Light
               </button>
+
               <button
-                class={`p-2 rounded-md ${theme.value === 'dark' ? 'border-2 border-blue-500' : 'border'}`}
+                class={`p-2 rounded-md size-18 flex flex-col justify-center items-center ${theme() === 'dark' ? 'border-2 border-blue-500' : 'border'}`}
                 onClick={() => handleThemeChange('dark')}
               >
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 1.911-.5 3a9 9 0 0 0 9 9c.239 0 .254.018.488 0A9.004 9.004 0 0 1 12 21Z"/>
                 </svg>
+                Dark
               </button>
+
               <button
-                class={`p-2 rounded-md ${theme.value === 'system' ? 'border-2 border-blue-500' : 'border'}`}
+                class={`p-2 rounded-md size-18 flex flex-col justify-center items-center ${theme() === 'system' ? 'border-2 border-blue-500' : 'border'}`}
                 onClick={() => handleThemeChange('system')}
               >
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 3.5 8.5 7.5m6-4-1.25 4m-1.5 5h-3l-1.5 4h6l-1.5-4Zm0 0h3l1.5-4h-6l1.5 4ZM12 12V9m0 3v3m0-3h3m-3 0H9"/>
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v5m-3 0h6M4 11h16M5 15h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1Z"/>
                 </svg>
+                System
               </button>
             </div>
           </label>

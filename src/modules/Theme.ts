@@ -1,6 +1,6 @@
-import { createStore } from 'solid-js/store';
+import { createSignal } from 'solid-js';
 
-export const [theme, setTheme] = createStore({ value: 'system' });
+export const [theme, setTheme] = createSignal('system');
 
 export const queryMatchDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -15,13 +15,13 @@ export const applyTheme = (theme: string) => {
 };
 
 export const handleSystemThemeChange = (event: MediaQueryListEvent) => {
-  if (theme.value === 'system') {
+  if (theme() === 'system') {
     applyTheme(event.matches ? 'dark' : 'light');
   }
 };
 
 export const initTheme = (onCleanup: CallableFunction) => {
-  applyTheme(theme.value);
+  applyTheme(theme());
   queryMatchDarkTheme.addEventListener('change', handleSystemThemeChange);
 
   onCleanup(() => {
