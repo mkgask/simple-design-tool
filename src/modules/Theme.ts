@@ -1,7 +1,13 @@
+import { createStore } from 'solid-js/store';
+
+export const [theme, setTheme] = createStore({ value: 'system' });
+
+export const queryMatchDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
+
 export const applyTheme = (theme: string) => {
-  document.body.classList.remove('light', 'dark', 'system');
+  document.body.classList.remove('light', 'dark');
   if (theme === 'system') {
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const systemTheme = queryMatchDarkTheme.matches ? 'dark' : 'light';
     document.body.classList.add(systemTheme);
   } else {
     document.body.classList.add(theme);
@@ -9,7 +15,16 @@ export const applyTheme = (theme: string) => {
 };
 
 export const handleSystemThemeChange = (event: MediaQueryListEvent) => {
-  if (theme() === 'system') {
+  if (theme.value === 'system') {
     applyTheme(event.matches ? 'dark' : 'light');
   }
 };
+
+export const initTheme = (onCleanup: CallableFunction) => {
+  applyTheme(theme.value);
+  queryMatchDarkTheme.addEventListener('change', handleSystemThemeChange);
+
+  onCleanup(() => {
+    queryMatchDarkTheme.removeEventListener('change', handleSystemThemeChange);
+  });
+}

@@ -1,8 +1,7 @@
 import { createSignal } from 'solid-js';
-import { applyTheme } from '../../modules/Theme'; // Import the applyTheme function
+import { theme, setTheme, applyTheme } from '../../modules/Theme'; // Import the applyTheme function
 
 const SettingsDialog = ({ toggleSettingsDialog }) => {
-  const [theme, setTheme] = createSignal('system');
 
   const handleThemeChange = (event) => {
     const selectedTheme = event.target.value;
@@ -22,7 +21,7 @@ const SettingsDialog = ({ toggleSettingsDialog }) => {
         <div class="p-4">
           <label class="block mb-2">
             Theme:
-            <select value={theme()} onChange={handleThemeChange} class="block w-full mt-1 border-gray-300 rounded-md">
+            <select value={theme.value} onChange={handleThemeChange} class="block w-full mt-1 border-gray-300 rounded-md">
               <option value="light">Light</option>
               <option value="dark">Dark</option>
               <option value="system">System</option>
