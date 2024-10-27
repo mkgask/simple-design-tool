@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js';
-import { applyTheme } from '../../App'; // Import the applyTheme function
+import { applyTheme } from '../../modules/Theme'; // Import the applyTheme function
 
 const SettingsDialog = ({ toggleSettingsDialog }) => {
   const [theme, setTheme] = createSignal('system');
