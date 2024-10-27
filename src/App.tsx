@@ -2,6 +2,8 @@ import { Component, createSignal, onCleanup } from 'solid-js';
 import Header from './components/Header';
 import Main from './components/Main';
 
+import 'flowbite';
+
 const App: Component = () => {
   const [theme, setTheme] = createSignal('system');
 
