@@ -1,12 +1,13 @@
 import { createSignal } from 'solid-js';
+import { applyTheme } from '../../App'; // Import the applyTheme function
 
 const SettingsDialog = ({ toggleSettingsDialog }) => {
   const [theme, setTheme] = createSignal('system');
 
   const handleThemeChange = (event) => {
-    setTheme(event.target.value);
-    document.body.classList.remove('light', 'dark');
-    document.body.classList.add(`${event.target.value}`);
+    const selectedTheme = event.target.value;
+    setTheme(selectedTheme);
+    applyTheme(selectedTheme); // Update the theme in App.tsx
   };
 
   return (
