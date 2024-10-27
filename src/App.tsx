@@ -8,8 +8,8 @@ const App: Component = () => {
   const [theme, setTheme] = createSignal('system');
 
   const applyTheme = (theme: string) => {
-    document.body.classList.remove('light-theme', 'dark-theme');
-    document.body.classList.add(`${theme}-theme`);
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(`${theme}`);
   };
 
   const handleSystemThemeChange = (event: MediaQueryListEvent) => {
@@ -26,7 +26,7 @@ const App: Component = () => {
   });
 
   return (
-    <div class="App" data-testid="app">
+    <div class="text-gray-800 dark:bg-gray-800 dark:text-white" style="min-height: 100vh" data-testid="app">
       <Header />
       <Main />
     </div>
