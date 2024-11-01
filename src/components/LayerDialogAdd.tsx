@@ -1,8 +1,9 @@
 import { Component, createSignal } from 'solid-js';
+import { LayerType } from '../modules/Layers'; // Pd6ac
 
 const LayerDialogAdd: Component<{ onAddLayer: (name: string, type: string) => void, onClose: () => void }> = (props) => {
   const [layerName, setLayerName] = createSignal('');
-  const [layerType, setLayerType] = createSignal('normal');
+  const [layerType, setLayerType] = createSignal(LayerType.Normal);
 
   const handleSubmit = (e: Event) => {
     e.preventDefault();
@@ -31,11 +32,12 @@ const LayerDialogAdd: Component<{ onAddLayer: (name: string, type: string) => vo
             <select
               id="layerType"
               value={layerType()}
-              onChange={(e) => setLayerType(e.currentTarget.value)}
+              onChange={(e) => setLayerType(e.currentTarget.value as LayerType)}
               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
             >
-              <option value="normal">Normal</option>
-              <option value="effect">Effect</option>
+              {Object.values(LayerType).map((type) => (
+                <option value={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</option>
+              ))}
             </select>
           </div>
           <div class="flex justify-end">
