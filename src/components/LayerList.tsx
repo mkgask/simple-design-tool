@@ -33,7 +33,7 @@ const LayerList: Component = () => {
           class="p-1 bg-blue-500 text-white rounded-full hover:bg-blue-600"
           onClick={() => setIsAddDialogOpen(true)}
         >
-          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
           </svg>
         </button>
@@ -50,13 +50,13 @@ const LayerList: Component = () => {
             <span>{layer.name} ({layer.type})</span>
             <div class="flex space-x-2">
               <button
-                class="p-1 text-blue"
+                class="p-1 text-blue-500"
                 onClick={() => {
                   setSelectedLayer(layer);
                   setIsEditDialogOpen(true);
                 }}
               >
-                <svg class="w-4 h-4 text-gray-400 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"/>
                 </svg>
               </button>
@@ -67,7 +67,7 @@ const LayerList: Component = () => {
                   setIsDeleteDialogOpen(true);
                 }}
               >
-                <svg class="w-4 h-4 text-gray-400 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6M6 6l12 12"/>
                 </svg>
               </button>
