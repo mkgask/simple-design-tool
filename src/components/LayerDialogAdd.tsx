@@ -1,7 +1,7 @@
 import { Component, createSignal } from 'solid-js';
 import { LayerType } from '../modules/Layers'; // Pd6ac
 
-const LayerDialogAdd: Component<{ onAddLayer: (name: string, type: string) => void, onClose: () => void }> = (props) => {
+const LayerDialogAdd: Component<{ onAddLayer: (name: string, type: LayerType) => void, onClose: () => void }> = (props) => {
   const [layerName, setLayerName] = createSignal('');
   const [layerType, setLayerType] = createSignal(LayerType.Normal);
 

@@ -19,6 +19,8 @@ const createLayer = (id: string, name: string, type: LayerType): Layer => ({
   children: [],
 });
 
+const createLayerID = () => Math.random().toString(36).substring(2, 9);
+
 const addChildLayer = (parentLayer: Layer, childLayer: Layer) => {
   parentLayer.children.push(childLayer);
 };
@@ -37,4 +39,9 @@ const removeLayer = (layerId: string) => {
   setLayers(layers().filter(layer => layer.id !== layerId));
 };
 
-export { createLayer, addChildLayer, removeChildLayer, layers, addLayer, removeLayer, LayerType };
+const editLayer = (layerId: string, name: string, type: LayerType) => {
+  setLayers(layers().map(layer => layer.id === layerId ? { ...layer, name, type } : layer));
+}
+
+export { LayerType, createLayer, createLayerID, addChildLayer, removeChildLayer, layers, setLayers, addLayer, removeLayer, editLayer };
+export type { Layer };

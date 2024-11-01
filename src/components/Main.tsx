@@ -15,9 +15,7 @@ const Main: Component = () => {
         </div>
       </div>
       <div class="w-1/3 border-l dark:border-gray-600">
-		<div class="p-4">
-			<LayerList />
-		</div>
+        <LayerList />
       </div>
     </div>
   );
