@@ -33,8 +33,8 @@ module.exports = {
 		colors: {
 			transparent: 'transparent',
 			current: 'currentColor',
-			black: colors.black,
-			white: colors.white,
+			black: colors.gray['950'],
+			white: colors.gray['50'],
 			gray: colors.gray,
 			red: colors.rose,
 			yellow: colors.amber,

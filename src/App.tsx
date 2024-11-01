@@ -9,7 +9,7 @@ const App: Component = () => {
   initTheme(onCleanup);
 
   return (
-    <div class="text-gray-800 dark:bg-gray-800 dark:text-white" style="min-height: 100vh" data-testid="app">
+    <div class="text-gray-800 dark:bg-gray-800 dark:text-gray-100" style="min-height: 100vh" data-testid="app">
       <Header />
       <Main />
     </div>
