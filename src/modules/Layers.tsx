@@ -4,12 +4,14 @@ type LayerType = 'normal' | 'effect';
 
 interface Layer {
   id: string;
+  name: string;
   type: LayerType;
   children: Layer[];
 }
 
-const createLayer = (id: string, type: LayerType): Layer => ({
+const createLayer = (id: string, name: string, type: LayerType): Layer => ({
   id,
+  name,
   type,
   children: [],
 });
