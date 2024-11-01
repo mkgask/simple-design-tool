@@ -1,11 +1,12 @@
 import { Component, createSignal } from 'solid-js';
 import LayerDialogAdd from './LayerDialogAdd';
+import { LayerType } from '../modules/Layers';
 
 const LayerList: Component = () => {
-  const [layers, setLayers] = createSignal<{ name: string; type: string }[]>([]);
+  const [layers, setLayers] = createSignal<{ name: string; type: LayerType }[]>([]);
   const [isDialogOpen, setIsDialogOpen] = createSignal(false);
 
-  const handleAddLayer = (name: string, type: string) => {
+  const handleAddLayer = (name: string, type: LayerType) => {
     setLayers([...layers(), { name, type }]);
   };
 

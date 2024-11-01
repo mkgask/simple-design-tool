@@ -1,6 +1,9 @@
 import { createSignal } from 'solid-js';
 
-type LayerType = 'normal' | 'effect';
+enum LayerType {
+  Normal = 'normal',
+  Effect = 'effect',
+}
 
 interface Layer {
   id: string;
@@ -34,4 +37,4 @@ const removeLayer = (layerId: string) => {
   setLayers(layers().filter(layer => layer.id !== layerId));
 };
 
-export { createLayer, addChildLayer, removeChildLayer, layers, addLayer, removeLayer };
+export { createLayer, addChildLayer, removeChildLayer, layers, addLayer, removeLayer, LayerType };
