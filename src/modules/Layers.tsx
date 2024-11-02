@@ -98,5 +98,35 @@ const createVectorDataCircle = () => {
   }
 };
 
-export { LayerType, createLayer, createLayerID, addChildLayer, removeChildLayer, layers, setLayers, addLayer, removeLayer, editLayer, createVectorDataCircle };
+const renderVectorDataOnCanvas = (canvas: HTMLCanvasElement, vectorData: VectorData) => {
+  const ctx = canvas.getContext('2d');
+  if (ctx) {
+    // Initialize canvas with white background
+    ctx.fillStyle = 'rgba(255, 255, 255, 1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw vectorData content on the canvas, centered and scaled
+    const { paths } = vectorData;
+    paths.forEach((path: VectorPath) => {
+      ctx.beginPath();
+      path.points.forEach((point, index) => {
+        const x = (point.x / 100) * 48;
+        const y = (point.y / 100) * 24;
+        if (index === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      });
+      ctx.closePath();
+      ctx.fillStyle = path.fillColor || 'transparent';
+      ctx.fill();
+      ctx.strokeStyle = path.strokeColor || 'black';
+      ctx.lineWidth = path.strokeWidth || 1;
+      ctx.stroke();
+    });
+  }
+};
+
+export { LayerType, createLayer, createLayerID, addChildLayer, removeChildLayer, layers, setLayers, addLayer, removeLayer, editLayer, createVectorDataCircle, renderVectorDataOnCanvas };
 export type { Layer };
