@@ -5,7 +5,7 @@ enum LayerType {
   Effect = 'effect',
 }
 
-enum storokeType {
+enum strokeType {
   Solid = 'solid',
   Dashed = 'dashed',
 }
@@ -15,7 +15,7 @@ interface VectorPath {
   fillColor?: string;
   strokeColor?: string;
   strokeWidth?: number;
-  strokeStyle?: storokeType;
+  strokeStyle?: strokeType;
 }
 
 interface VectorData {
@@ -81,7 +81,7 @@ const createVectorDataCircle = () => {
     fillColor: 'transparent',
     strokeColor: '#888',
     strokeWidth: 1,
-    strokeStyle: storokeType.Solid,
+    strokeStyle: strokeType.Solid,
   };
 
   const vectorData: VectorData = {
