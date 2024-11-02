@@ -3,6 +3,7 @@ import LayerDialogAdd from './LayerDialogAdd';
 import LayerDialogEdit from './LayerDialogEdit';
 import LayerDialogDelete from './LayerDialogDelete';
 import { layers, createLayerID, addLayer, editLayer, removeLayer, LayerType } from '../modules/Layers';
+import LayerThumbnail from './LayerThumbnail';
 
 const LayerList: Component = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = createSignal(false);
@@ -47,6 +48,7 @@ const LayerList: Component = () => {
       <ul>
         {layers().map((layer) => (
           <li class="p-2 border-b dark:border-gray-600 flex justify-between items-center">
+            <LayerThumbnail vectorData={layer.vectorData} />
             <span>{layer.name} ({layer.type})</span>
             <div class="flex space-x-2">
               <button
