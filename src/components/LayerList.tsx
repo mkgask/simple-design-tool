@@ -49,7 +49,7 @@ const LayerList: Component = () => {
         {layers().map((layer) => (
           <li class="p-2 border-b dark:border-gray-600 flex justify-between items-center">
             <LayerThumbnail vectorData={layer.vectorData} />
-            <span>{layer.name} ({layer.type})</span>
+            <span class="text-sm">{layer.name} <span class="text-xs">({layer.type})</span></span>
             <div class="flex space-x-2">
               <button
                 class="p-1 text-blue-500"

@@ -107,11 +107,17 @@ const renderVectorDataOnCanvas = (canvas: HTMLCanvasElement, vectorData: VectorD
 
     // Draw vectorData content on the canvas, centered and scaled
     const { paths } = vectorData;
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    const scale = Math.min(canvasWidth, canvasHeight) / 100;
+    const offsetX = (canvasWidth - 100 * scale) / 2;
+    const offsetY = (canvasHeight - 100 * scale) / 2;
+
     paths.forEach((path: VectorPath) => {
       ctx.beginPath();
       path.points.forEach((point, index) => {
-        const x = (point.x / 100) * 48;
-        const y = (point.y / 100) * 24;
+        const x = point.x * scale + offsetX;
+        const y = point.y * scale + offsetY;
         if (index === 0) {
           ctx.moveTo(x, y);
         } else {
