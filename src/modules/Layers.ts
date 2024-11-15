@@ -1,4 +1,5 @@
 import { createSignal } from 'solid-js';
+import type { Point } from './Point';
 
 enum LayerType {
   Normal = 'normal',
@@ -8,11 +9,6 @@ enum LayerType {
 enum strokeType {
   Solid = 'solid',
   Dashed = 'dashed',
-}
-
-interface Point {
-  x: number;
-  y: number;
 }
 
 interface VectorPath {
