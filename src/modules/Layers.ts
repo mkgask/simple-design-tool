@@ -28,9 +28,9 @@ interface Layer {
   name: string;
   type: LayerType;
   children: Layer[];
+  size: Point;
+  position: Point;
   vectorData?: VectorData;
-  size?: Point;
-  position?: Point;
 }
 
 const createLayer = (id: string, name: string, type: LayerType, vectorData?: VectorData, size?: Point, position?: Point): Layer => {
@@ -39,9 +39,9 @@ const createLayer = (id: string, name: string, type: LayerType, vectorData?: Vec
     name,
     type,
     children: [],
-    vectorData,
     size: size ? size : { x: 100, y: 100 },
     position: position ? position : { x: 0, y: 0 },
+    vectorData,
   };
 }
 
