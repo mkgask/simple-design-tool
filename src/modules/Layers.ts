@@ -10,8 +10,13 @@ enum strokeType {
   Dashed = 'dashed',
 }
 
+interface Point {
+  x: number;
+  y: number;
+}
+
 interface VectorPath {
-  points: { x: number, y: number }[];
+  points: Point[];
   fillColor?: string;
   strokeColor?: string;
   strokeWidth?: number;
@@ -28,15 +33,21 @@ interface Layer {
   type: LayerType;
   children: Layer[];
   vectorData?: VectorData;
+  size?: Point;
+  position?: Point;
 }
 
-const createLayer = (id: string, name: string, type: LayerType, vectorData?: VectorData): Layer => ({
-  id,
-  name,
-  type,
-  children: [],
-  vectorData,
-});
+const createLayer = (id: string, name: string, type: LayerType, vectorData?: VectorData, size?: Point, position?: Point): Layer => {
+  return {
+    id,
+    name,
+    type,
+    children: [],
+    vectorData,
+    size: size ? size : { x: 100, y: 100 },
+    position: position ? position : { x: 0, y: 0 },
+  };
+}
 
 const createLayerID = () => Math.random().toString(36).substring(2, 9);
 
@@ -53,6 +64,10 @@ const [layers, setLayers] = createSignal<Layer[]>([]);
 const addLayer = (layer: Layer) => {
   setLayers([...layers(), layer]);
 };
+
+const pushLayer = (layer: Layer) => {
+  setLayers([layer, ...layers()]);
+}
 
 const removeLayer = (layerId: string) => {
   setLayers(layers().filter(layer => layer.id !== layerId));
@@ -89,12 +104,11 @@ const createVectorDataCircle = () => {
   };
 
   if (layers().length === 0) {
-    const defaultLayer = createLayer(createLayerID(), 'Default Layer', LayerType.Normal, vectorData);
-    addLayer(defaultLayer);
+    const firstLayer = createLayer(createLayerID(), 'Default Layer', LayerType.Normal, vectorData);
+    addLayer(firstLayer);
   } else {
-    const firstLayer = layers()[0];
-    firstLayer.vectorData = vectorData;
-    setLayers([firstLayer, ...layers().slice(1)]);
+    const firstLayer = createLayer(createLayerID(), 'Default Layer', LayerType.Normal, vectorData);
+    pushLayer(firstLayer);
   }
 };
 
@@ -134,5 +148,18 @@ const renderVectorDataOnCanvas = (canvas: HTMLCanvasElement, vectorData: VectorD
   }
 };
 
-export { LayerType, createLayer, createLayerID, addChildLayer, removeChildLayer, layers, setLayers, addLayer, removeLayer, editLayer, createVectorDataCircle, renderVectorDataOnCanvas };
+const calculateCenter = (layer: Layer) => {
+  const { size, position } = layer;
+
+  if (!size || !position) {
+    return { x: 50, y: 50 };
+  }
+
+  return {
+    x: position.x + size.x / 2,
+    y: position.y + size.y / 2,
+  };
+}
+
+export { LayerType, createLayer, createLayerID, addChildLayer, removeChildLayer, layers, setLayers, addLayer, removeLayer, editLayer, createVectorDataCircle, renderVectorDataOnCanvas, calculateCenter };
 export type { Layer };
