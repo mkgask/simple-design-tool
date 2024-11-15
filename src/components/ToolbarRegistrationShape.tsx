@@ -10,6 +10,7 @@ const ToolbarRegistrationShape: Component = () => {
 
   const handleCircleClick = () => {
     createVectorDataCircle();
+    setIsOpen(false);
   };
 
   return (
