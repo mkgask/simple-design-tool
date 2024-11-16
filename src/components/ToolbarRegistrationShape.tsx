@@ -1,5 +1,5 @@
 import { Component, createSignal } from 'solid-js';
-import { createVectorDataCircle } from '../modules/Layers';
+import { addLayer, createLayer, createLayerID, createVectorDataCircle, LayerType } from '../modules/Layers';
 
 const ToolbarRegistrationShape: Component = () => {
   const [isOpen, setIsOpen] = createSignal(false);
@@ -9,7 +9,7 @@ const ToolbarRegistrationShape: Component = () => {
   };
 
   const handleCircleClick = () => {
-    createVectorDataCircle();
+    addLayer(createLayer(createLayerID(), 'Circle Layer', LayerType.Normal, createVectorDataCircle()));
     setIsOpen(false);
   };
 

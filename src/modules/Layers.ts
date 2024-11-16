@@ -1,6 +1,9 @@
 import { createSignal } from 'solid-js';
 import type { Point } from './Point';
 
+/*  Properties
+*/
+
 enum LayerType {
   Normal = 'normal',
   Effect = 'effect',
@@ -32,6 +35,9 @@ interface Layer {
   position: Point;
   vectorData?: VectorData;
 }
+
+/*  Foundation
+*/
 
 const createLayer = (id: string, name: string, type: LayerType, vectorData?: VectorData, size?: Point, position?: Point): Layer => {
   return {
@@ -73,7 +79,10 @@ const editLayer = (layerId: string, name: string, type: LayerType) => {
   setLayers(layers().map(layer => layer.id === layerId ? { ...layer, name, type } : layer));
 }
 
-const createVectorDataCircle = () => {
+/*  Modules Vectoring
+*/
+
+const createVectorDataCircle = (): VectorData => {
   const points = [];
   const radius = 50;
   const centerX = 50;
@@ -99,14 +108,11 @@ const createVectorDataCircle = () => {
     paths: [vectorPath],
   };
 
-  if (layers().length === 0) {
-    const firstLayer = createLayer(createLayerID(), 'Default Layer', LayerType.Normal, vectorData);
-    addLayer(firstLayer);
-  } else {
-    const firstLayer = createLayer(createLayerID(), 'Default Layer', LayerType.Normal, vectorData);
-    pushLayer(firstLayer);
-  }
+  return vectorData;
 };
+
+/*  Modules Rendering
+*/
 
 const renderVectorDataOnCanvas = (canvas: HTMLCanvasElement, vectorData: VectorData) => {
   const ctx = canvas.getContext('2d');
@@ -144,6 +150,9 @@ const renderVectorDataOnCanvas = (canvas: HTMLCanvasElement, vectorData: VectorD
   }
 };
 
+/*  Modules Positioning
+*/
+
 const calculateCenter = (layer: Layer) => {
   const { size, position } = layer;
 
@@ -157,5 +166,8 @@ const calculateCenter = (layer: Layer) => {
   };
 }
 
-export { LayerType, createLayer, createLayerID, addChildLayer, removeChildLayer, layers, setLayers, addLayer, removeLayer, editLayer, createVectorDataCircle, renderVectorDataOnCanvas, calculateCenter };
+/* Export
+*/
+
+export { LayerType, createLayer, createLayerID, addChildLayer, removeChildLayer, layers, setLayers, addLayer, pushLayer, removeLayer, editLayer, createVectorDataCircle, renderVectorDataOnCanvas, calculateCenter };
 export type { Layer };
