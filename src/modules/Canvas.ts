@@ -60,7 +60,7 @@ const clearCanvas = (canvas: Canvas, element: HTMLCanvasElement): void => {
   }
 };
 
-const selectLayer = (layer: Layer, element: HTMLCanvasElement): void => {
+const drawSelectLayerOutline = (layer: Layer, element: HTMLCanvasElement): void => {
   // Implementation for selecting a layer on the canvas
   const context = element.getContext('2d');
 
@@ -73,5 +73,5 @@ const selectLayer = (layer: Layer, element: HTMLCanvasElement): void => {
   context.strokeRect(layer.position.x, layer.position.y, layer.size.x, layer.size.y);
 };
 
-export { createCanvas, drawCanvas, clearCanvas, selectLayer };
+export { createCanvas, drawCanvas, clearCanvas, drawSelectLayerOutline };
 export type { Canvas };
