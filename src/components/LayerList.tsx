@@ -4,6 +4,7 @@ import LayerDialogEdit from './LayerDialogEdit';
 import LayerDialogDelete from './LayerDialogDelete';
 import { layers, createLayerID, addLayer, editLayer, removeLayer, LayerType } from '../modules/Layers';
 import LayerThumbnail from './LayerThumbnail';
+import { drawCanvas } from '../modules/Canvas';
 
 const LayerList: Component = () => {
   const [isAddDialogOpen, setIsAddDialogOpen] = createSignal(false);
@@ -13,16 +14,19 @@ const LayerList: Component = () => {
 
   const handleAddLayer = (name: string, type: LayerType) => {
     addLayer({ id: createLayerID(), name, type, children: [] });
+    drawCanvas(layers(), document.querySelector('canvas'));
   };
 
   const handleEditLayer = (id: string, name: string, type: LayerType) => {
     editLayer(id, name, type);
+    drawCanvas(layers(), document.querySelector('canvas'));
   };
 
   const handleDeleteLayer = () => {
     if (selectedLayer()) {
       removeLayer(selectedLayer().id);
       setIsDeleteDialogOpen(false);
+      drawCanvas(layers(), document.querySelector('canvas'));
     }
   };
 
