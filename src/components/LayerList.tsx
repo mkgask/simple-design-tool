@@ -13,7 +13,7 @@ const LayerList: Component = () => {
   const [selectedLayer, setSelectedLayer] = createSignal(null);
 
   const handleAddLayer = (name: string, type: LayerType) => {
-    addLayer({ id: createLayerID(), name, type, children: [] });
+    addLayer(createLayer(createLayerID(), name, type));
     drawCanvas(layers(), document.querySelector('canvas'));
   };
 
