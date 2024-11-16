@@ -2,7 +2,7 @@ import { Component, createSignal } from 'solid-js';
 import LayerDialogAdd from './LayerDialogAdd';
 import LayerDialogEdit from './LayerDialogEdit';
 import LayerDialogDelete from './LayerDialogDelete';
-import { layers, createLayerID, addLayer, editLayer, removeLayer, LayerType } from '../modules/Layers';
+import { layers, createLayerID, createLayer, addLayer, editLayer, removeLayer, LayerType } from '../modules/Layers';
 import LayerThumbnail from './LayerThumbnail';
 import { drawCanvas } from '../modules/Canvas';
 
