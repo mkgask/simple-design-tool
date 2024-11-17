@@ -3,11 +3,13 @@ import type { Layer } from './Layers';
 
 interface Canvas {
   size: Point;
+  backgroundColor: string;
 }
 
-const createCanvas = (size: Point): Canvas => {
+const createCanvas = (size: Point, backgroundColor: string): Canvas => {
   return {
-    size,
+    size: size || { x: 800, y: 600 },
+    backgroundColor: backgroundColor || '#fff',
   };
 };
 
@@ -56,7 +58,8 @@ const clearCanvas = (canvas: Canvas, element: HTMLCanvasElement): void => {
   const context = element.getContext('2d');
 
   if (context) {
-    context.clearRect(0, 0, canvas.size.x, canvas.size.y);
+    context.fillStyle = canvas.backgroundColor;
+    context.fillRect(0, 0, canvas.size.x, canvas.size.y);
   }
 };
 

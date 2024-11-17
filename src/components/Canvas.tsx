@@ -1,27 +1,37 @@
 import { Component, createEffect, onMount } from 'solid-js';
-import { drawCanvas, clearCanvas } from '../modules/Canvas';
+import { drawCanvas, clearCanvas, createCanvas } from '../modules/Canvas';
+import type { Canvas } from '../modules/Canvas';
 import { layers } from '../modules/Layers';
 
 const Canvas: Component = () => {
-  let canvas: HTMLCanvasElement;
+  let canvas: Canvas;
+  let canvasElement: HTMLCanvasElement;
 
   onMount(() => {
-    if (canvas) {
-      clearCanvas({ size: { x: canvas.width, y: canvas.height } }, canvas);
-      drawCanvas(layers(), canvas);
+    if (canvasElement) {
+      if (!canvas) {
+        canvas = createCanvas({ x: canvasElement.width, y: canvasElement.height }, '#fff');
+      }
+
+      clearCanvas(canvas, canvasElement);
+      drawCanvas(layers(), canvasElement);
     }
   });
 
   createEffect(() => {
-    if (canvas) {
-      clearCanvas({ size: { x: canvas.width, y: canvas.height } }, canvas);
-      drawCanvas(layers(), canvas);
+    if (canvasElement) {
+      if (!canvas) {
+        canvas = createCanvas({ x: canvasElement.width, y: canvasElement.height }, '#fff');
+      }
+
+      clearCanvas(canvas, canvasElement);
+      drawCanvas(layers(), canvasElement);
     }
   });
 
   return (
     <div class="canvas">
-      <canvas ref={canvas} width="800" height="600"></canvas>
+      <canvas ref={canvasElement} width="800" height="600"></canvas>
     </div>
   );
 };
