@@ -71,7 +71,7 @@ const drawSelectLayerOutline = (layer: Layer, element: HTMLCanvasElement): void 
     throw new Error('Failed to get 2d context from canvas element');
   }
 
-  context.strokeStyle = 'red';
+  context.strokeStyle = 'lightblue';
   context.lineWidth = 3;
   context.strokeRect(layer.position.x, layer.position.y, layer.size.x, layer.size.y);
 };

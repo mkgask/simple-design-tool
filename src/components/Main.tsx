@@ -7,11 +7,11 @@ const Main: Component = () => {
   return (
     <div class="flex">
       <div class="flex flex-col w-2/3">
-        <div class="p-4 border-b dark:border-gray-600">
+        <div class="px-4 py-1 border-b dark:border-gray-600">
           <Toolbar />
         </div>
 
-        <div class="flex-1 p-4">
+        <div class="flex-1">
           <Canvas />
         </div>
       </div>

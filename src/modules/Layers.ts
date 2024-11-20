@@ -62,6 +62,7 @@ const removeChildLayer = (parentLayer: Layer, childLayerId: string) => {
 };
 
 const [layers, setLayers] = createSignal<Layer[]>([]);
+const [selectedLayer, setSelectedLayer] = createSignal<Layer | null>(null);
 
 const addLayer = (layer: Layer) => {
   setLayers([...layers(), layer]);
@@ -169,5 +170,5 @@ const calculateCenter = (layer: Layer) => {
 /* Export
 */
 
-export { LayerType, createLayer, createLayerID, addChildLayer, removeChildLayer, layers, setLayers, addLayer, pushLayer, removeLayer, editLayer, createVectorDataCircle, renderVectorDataOnCanvas, calculateCenter };
+export { LayerType, createLayer, createLayerID, addChildLayer, removeChildLayer, layers, setLayers, selectedLayer, setSelectedLayer, addLayer, pushLayer, removeLayer, editLayer, createVectorDataCircle, renderVectorDataOnCanvas, calculateCenter };
 export type { Layer };
