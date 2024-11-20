@@ -33,6 +33,7 @@ const LayerList: Component = () => {
     <div class="layer-list">
       <div class="p-4 flex justify-between align-center border-b dark:border-gray-600">
         <h2 class="text-xl font-semibold">Layer</h2>
+
         <button
           class="p-1 bg-blue-500 text-white rounded-full hover:bg-blue-600"
           onClick={() => setIsAddDialogOpen(true)}
@@ -41,6 +42,7 @@ const LayerList: Component = () => {
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
           </svg>
         </button>
+
         {isAddDialogOpen() && (
           <LayerDialogAdd
             onAddLayer={handleAddLayer}
@@ -48,6 +50,7 @@ const LayerList: Component = () => {
           />
         )}
       </div>
+
       <ul>
         {layers().map((layer) => (
           <li class="p-2 border-b dark:border-gray-600 flex justify-between items-center">
@@ -64,6 +67,7 @@ const LayerList: Component = () => {
               ) : (
                 <div class="w-4 h-4"></div>
               )}
+
               <LayerThumbnail vectorData={layer.vectorData} />
               <span class="text-sm">{layer.name} <span class="text-xs">({layer.type})</span></span>
             </div>
@@ -96,6 +100,7 @@ const LayerList: Component = () => {
           </li>
         ))}
       </ul>
+
       {isEditDialogOpen() && selectedLayer() && (
         <LayerDialogEdit
           layer={selectedLayer()}
@@ -103,6 +108,7 @@ const LayerList: Component = () => {
           onClose={() => setIsEditDialogOpen(false)}
         />
       )}
+
       {isDeleteDialogOpen() && selectedLayer() && (
         <LayerDialogDelete
           layerName={selectedLayer().name}

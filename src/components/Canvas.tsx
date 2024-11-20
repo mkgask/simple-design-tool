@@ -1,13 +1,15 @@
-import { Component, createEffect, onMount } from 'solid-js';
-import { drawCanvas, clearCanvas, createCanvas } from '../modules/Canvas';
+import { Component, createEffect, onCleanup, onMount } from 'solid-js';
+import { drawCanvas, clearCanvas, createCanvas, enableLayerDragging, drawSelectLayerOutline } from '../modules/Canvas';
 import type { Canvas } from '../modules/Canvas';
-import { layers } from '../modules/Layers';
+import { Layer, layers, selectedLayer, setLayers } from '../modules/Layers';
 
 const Canvas: Component = () => {
   let canvas: Canvas;
   let canvasElement: HTMLCanvasElement;
+  let cleanup: CallableFunction;
+  let oldSelectedLayer: Layer;
 
-  onMount(() => {
+  const initializeCanvas = () => {
     if (canvasElement) {
       if (!canvas) {
         canvas = createCanvas({ x: canvasElement.width, y: canvasElement.height }, '#fff');
@@ -15,18 +17,34 @@ const Canvas: Component = () => {
 
       clearCanvas(canvas, canvasElement);
       drawCanvas(layers(), canvasElement);
+      //drawSelectLayerOutline(selectedLayer(), canvasElement);
+
+      if (selectedLayer()) {
+        if (selectedLayer().id !== oldSelectedLayer?.id) {
+          //if (cleanup) cleanup();
+
+          cleanup = enableLayerDragging(selectedLayer(), canvasElement, (position) => {
+            setLayers(layers().map(layer => layer.id === selectedLayer().id ? { ...layer, position } : layer));
+            clearCanvas(canvas, canvasElement);
+            drawCanvas(layers(), canvasElement);
+            //drawSelectLayerOutline(selectedLayer(), canvasElement);
+          });
+        }
+      }
     }
+  };
+
+  onMount(() => {
+    initializeCanvas();
   });
 
   createEffect(() => {
-    if (canvasElement) {
-      if (!canvas) {
-        canvas = createCanvas({ x: canvasElement.width, y: canvasElement.height }, '#fff');
-      }
+    //if (cleanup) cleanup();
+    initializeCanvas();
+  });
 
-      clearCanvas(canvas, canvasElement);
-      drawCanvas(layers(), canvasElement);
-    }
+  onCleanup(() => {
+    if (cleanup) cleanup();
   });
 
   return (
