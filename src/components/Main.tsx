@@ -10,10 +10,12 @@ const Main: Component = () => {
         <div class="p-4 border-b dark:border-gray-600">
           <Toolbar />
         </div>
+
         <div class="flex-1 p-4">
           <Canvas />
         </div>
       </div>
+
       <div class="w-1/3 border-l dark:border-gray-600">
         <LayerList />
       </div>

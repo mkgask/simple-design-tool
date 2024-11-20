@@ -5,6 +5,7 @@ const LayerDialogDelete: Component<{ layerName: string, layerType: string, onDel
     <div class="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50">
       <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-96 p-4">
         <h2 class="text-xl font-semibold mb-4">Delete Layer</h2>
+
         <p>
             Are you sure you want to delete?<br />
             name: <strong>{props.layerName}</strong><br />
@@ -18,6 +19,7 @@ const LayerDialogDelete: Component<{ layerName: string, layerType: string, onDel
           >
             Cancel
           </button>
+
           <button
             type="button"
             onClick={props.onDelete}

@@ -27,6 +27,7 @@ const ToolbarRegistrationShape: Component = () => {
               </svg>
               Circle
             </li>
+
             <li class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
               <svg class="w-6 h-6 inline-block mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 24 24">
                 <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="2"/>

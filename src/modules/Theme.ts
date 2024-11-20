@@ -20,12 +20,14 @@ export const getThemeFromLocalStorage = () => {
 
 export const applyTheme = (theme: ThemeType) => {
   document.body.classList.remove(ThemeType.Light, ThemeType.Dark);
+
   if (theme === ThemeType.System) {
     const systemTheme = queryMatchDarkTheme.matches ? ThemeType.Dark : ThemeType.Light;
     document.body.classList.add(systemTheme);
   } else {
     document.body.classList.add(theme);
   }
+
   saveThemeToLocalStorage(theme);
 };
 

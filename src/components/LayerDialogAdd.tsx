@@ -18,6 +18,7 @@ const LayerDialogAdd: Component<{ onAddLayer: (name: string, type: LayerType) =>
         <form onSubmit={handleSubmit}>
           <div class="mb-4">
             <label for="layerName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Layer Name</label>
+
             <input
               type="text"
               id="layerName"
@@ -27,8 +28,10 @@ const LayerDialogAdd: Component<{ onAddLayer: (name: string, type: LayerType) =>
               required
             />
           </div>
+
           <div class="mb-4">
             <label for="layerType" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Layer Type</label>
+
             <select
               id="layerType"
               value={layerType()}
@@ -40,6 +43,7 @@ const LayerDialogAdd: Component<{ onAddLayer: (name: string, type: LayerType) =>
               ))}
             </select>
           </div>
+
           <div class="flex justify-end">
             <button
               type="button"
@@ -48,6 +52,7 @@ const LayerDialogAdd: Component<{ onAddLayer: (name: string, type: LayerType) =>
             >
               Cancel
             </button>
+
             <button
               type="submit"
               class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
